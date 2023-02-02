@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using my_books.Data;
@@ -28,17 +30,30 @@ builder.Services.AddTransient<AuthorsService>();
 builder.Services.AddTransient<PublishersService>();
 
 
+
+//builder.Services.AddApiVersioning();
+builder.Services.AddApiVersioning(config =>
+{
+	config.DefaultApiVersion = new ApiVersion(1, 0);
+	config.AssumeDefaultVersionWhenUnspecified = true;
+
+	//config.ApiVersionReader = new HeaderApiVersionReader("custom-version-header");
+	//config.ApiVersionReader = new MediaTypeApiVersionReader();
+
+
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
 	app.UseSwagger();
 	app.UseSwaggerUI();
-	//app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v2/swagger.json",
-	//	"my_books_ui_updated v2"));
+//	//app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v2/swagger.json",
+//	//	"my_books_ui_updated v2"));
 
-}
+//}
 
 app.UseHttpsRedirection();
 

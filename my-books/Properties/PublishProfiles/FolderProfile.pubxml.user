@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\c#\asp.net core web api\my-books\ProjectHost</_PublishTargetUrl>
+    <History>True|2023-01-19T09:52:34.5415563Z;True|2023-01-19T11:44:17.2584365+02:00;True|2023-01-19T11:26:08.6327575+02:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>
