@@ -5,9 +5,7 @@ namespace my_books.Data
 {
 	public class AppDbContext:DbContext
 	{
-		public AppDbContext(DbContextOptions<AppDbContext>options):base(options)
-		{
-		}
+		public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
@@ -20,12 +18,19 @@ namespace my_books.Data
 				.HasOne(a => a.Author)
 				.WithMany(ab => ab.Book_Authors)
 				.HasForeignKey(ai => ai.AuthorId);
+
+			//modelBuilder.Entity<Log>().HasKey(n => n.Id); // but it's not necessarily 
 		}
 
 		public DbSet<Book> Books { get; set; }
 		public DbSet<Author> Authors { get; set; }
 		public DbSet<Book_Author> Books_Authors { get; set; }
 		public DbSet<Publisher> Publishers { get; set; }
-
+		public DbSet<Log> Logs { get; set; }
 	}
 }
+
+
+
+
+

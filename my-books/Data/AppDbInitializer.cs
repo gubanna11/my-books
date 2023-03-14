@@ -10,7 +10,20 @@ namespace my_books.Data
 			{
 				var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
 
-				if(!context.Books.Any())
+				if (!context.Publishers.Any())
+				{
+					context.Publishers.AddRange(new Publisher()
+					{
+						Name = "Publisher 1"
+					},
+					new Publisher()
+					{
+						Name = "Publisher 2"
+					});
+					context.SaveChanges();
+				}
+
+				if (!context.Books.Any())
 				{
 					context.Books.AddRange(new Book()
 					{
@@ -21,7 +34,8 @@ namespace my_books.Data
 						Rate = 4,
 						Genre = "Biography",
 						CoverUrl = "https...",
-						DateAdded = DateTime.Now
+						DateAdded = DateTime.Now,
+						PublisherId = 1
 					},
 					new Book()
 					{
@@ -30,7 +44,8 @@ namespace my_books.Data
 						IsRead = false,
 						Genre = "Biography",
 						CoverUrl = "https...",
-						DateAdded = DateTime.Now
+						DateAdded = DateTime.Now,
+						PublisherId = 2
 					});
 					context.SaveChanges();
 				}

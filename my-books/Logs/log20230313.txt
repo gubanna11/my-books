@@ -1,0 +1,42 @@
+03/13/2023 12:06:40 +02:00 [Information] - Message: Entity Framework Core "6.0.5" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.5"' with options: "None"
+03/13/2023 12:06:40 +02:00 [Information] - Message: Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Publishers] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+03/13/2023 12:06:41 +02:00 [Information] - Message: Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Books] AS [b]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+03/13/2023 12:06:41 +02:00 [Information] - Message: Application started. Press Ctrl+C to shut down.
+03/13/2023 12:06:41 +02:00 [Information] - Message: Hosting environment: "Development"
+03/13/2023 12:06:41 +02:00 [Information] - Message: Content root path: "D:\c#\asp.net core web api\my-books\my-books\"
+03/13/2023 12:06:41 +02:00 [Information] - Message: Request starting HTTP/2 GET https://localhost:44362/api/publishers/get-all-publishers - -
+03/13/2023 12:06:41 +02:00 [Information] - Message: Executing endpoint '"my_books.Controllers.PublishersController.GetAllPiblishers (my-books)"'
+03/13/2023 12:06:41 +02:00 [Information] - Message: Route matched with "{action = \"GetAllPiblishers\", controller = \"Publishers\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult GetAllPiblishers(System.String, System.String, Int32)" on controller "my_books.Controllers.PublishersController" ("my-books").
+03/13/2023 12:06:47 +02:00 [Information] - Message: Executed action "my_books.Controllers.PublishersController.GetAllPiblishers (my-books)" in 6023.8055ms
+03/13/2023 12:06:47 +02:00 [Information] - Message: Executed endpoint '"my_books.Controllers.PublishersController.GetAllPiblishers (my-books)"'
+03/13/2023 12:06:47 +02:00 [Error] - Message: An unhandled exception has occurred while executing the request.
+System.Exception: This is an exception thrown from GetAllPiblishers()
+   at my_books.Controllers.PublishersController.GetAllPiblishers(String sortBy, String searchString, Int32 pageNumber) in D:\c#\asp.net core web api\my-books\my-books\Controllers\PublishersController.cs:line 26
+   at lambda_method11(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+03/13/2023 12:06:47 +02:00 [Information] - Message: Request finished HTTP/2 GET https://localhost:44362/api/publishers/get-all-publishers - - - 500 - application/json 6682.5415ms

@@ -1,0 +1,32 @@
+03/12/2023 17:44:14 +02:00 [Information] - Message: Application started. Press Ctrl+C to shut down.
+03/12/2023 17:44:14 +02:00 [Information] - Message: Request starting HTTP/2 GET https://localhost:44362/api/publishers/get-all-publishers - -
+03/12/2023 17:44:14 +02:00 [Information] - Message: Hosting environment: "Development"
+03/12/2023 17:44:14 +02:00 [Information] - Message: Content root path: "D:\c#\asp.net core web api\my-books\my-books\"
+03/12/2023 17:44:14 +02:00 [Information] - Message: Executing endpoint '"my_books.Controllers.PublishersController.GetAllPiblishers (my-books)"'
+03/12/2023 17:44:14 +02:00 [Information] - Message: Route matched with "{action = \"GetAllPiblishers\", controller = \"Publishers\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult GetAllPiblishers(System.String, System.String, Int32)" on controller "my_books.Controllers.PublishersController" ("my-books").
+03/12/2023 17:44:14 +02:00 [Information] - Message: This is just a log in GetAllPiblishers()
+03/12/2023 17:44:15 +02:00 [Information] - Message: Entity Framework Core "6.0.5" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.5"' with options: "None"
+03/12/2023 17:44:16 +02:00 [Information] - Message: Executed DbCommand ("16"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Name]
+FROM [Publishers] AS [p]
+ORDER BY [p].[Name]"
+03/12/2023 17:44:16 +02:00 [Information] - Message: Executing "OkObjectResult", writing value of type '"my_books.Data.Paging.PaginatedList`1[[my_books.Data.Models.Publisher, my-books, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+03/12/2023 17:44:16 +02:00 [Information] - Message: Executed action "my_books.Controllers.PublishersController.GetAllPiblishers (my-books)" in 2141.9411ms
+03/12/2023 17:44:16 +02:00 [Information] - Message: Executed endpoint '"my_books.Controllers.PublishersController.GetAllPiblishers (my-books)"'
+03/12/2023 17:44:16 +02:00 [Information] - Message: Request finished HTTP/2 GET https://localhost:44362/api/publishers/get-all-publishers - - - 200 - application/json;+charset=utf-8 2754.0446ms
+03/12/2023 17:45:29 +02:00 [Information] - Message: Application started. Press Ctrl+C to shut down.
+03/12/2023 17:45:29 +02:00 [Information] - Message: Request starting HTTP/2 GET https://localhost:44362/api/publishers/get-all-publishers - -
+03/12/2023 17:45:29 +02:00 [Information] - Message: Hosting environment: "Development"
+03/12/2023 17:45:29 +02:00 [Information] - Message: Content root path: "D:\c#\asp.net core web api\my-books\my-books\"
+03/12/2023 17:45:29 +02:00 [Information] - Message: Executing endpoint '"my_books.Controllers.PublishersController.GetAllPiblishers (my-books)"'
+03/12/2023 17:45:29 +02:00 [Information] - Message: Route matched with "{action = \"GetAllPiblishers\", controller = \"Publishers\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult GetAllPiblishers(System.String, System.String, Int32)" on controller "my_books.Controllers.PublishersController" ("my-books").
+03/12/2023 17:45:30 +02:00 [Information] - Message: This is just a log in GetAllPiblishers()
+03/12/2023 17:45:31 +02:00 [Information] - Message: Entity Framework Core "6.0.5" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.5"' with options: "None"
+03/12/2023 17:45:32 +02:00 [Information] - Message: Executed DbCommand ("22"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Name]
+FROM [Publishers] AS [p]
+ORDER BY [p].[Name]"
+03/12/2023 17:45:32 +02:00 [Information] - Message: Executing "OkObjectResult", writing value of type '"my_books.Data.Paging.PaginatedList`1[[my_books.Data.Models.Publisher, my-books, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+03/12/2023 17:45:32 +02:00 [Information] - Message: Executed action "my_books.Controllers.PublishersController.GetAllPiblishers (my-books)" in 2699.7153ms
+03/12/2023 17:45:32 +02:00 [Information] - Message: Executed endpoint '"my_books.Controllers.PublishersController.GetAllPiblishers (my-books)"'
+03/12/2023 17:45:32 +02:00 [Information] - Message: Request finished HTTP/2 GET https://localhost:44362/api/publishers/get-all-publishers - - - 200 - application/json;+charset=utf-8 3016.2582ms

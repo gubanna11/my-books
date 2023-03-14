@@ -5,10 +5,48 @@ using Microsoft.OpenApi.Models;
 using my_books.Data;
 using my_books.Data.Services;
 using my_books.Exceptions;
+using Serilog;
+using Serilog.Events;
+using Serilog.Formatting.Compact;
+using Serilog.Sinks.MSSqlServer;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnectionString");
+
+//Log.Logger = new LoggerConfiguration()
+//	.WriteTo.MSSqlServer("Data Source=COMPUTER\\MSSQLEXPRESS;Initial Catalog=my-books-db;Integrated Security=True;Encrypt=False",
+//	sinkOptions: new MSSqlServerSinkOptions { TableName = "Logs", SchemaName = "dbo", AutoCreateSqlTable = true },
+//	appConfiguration: configuration
+//		)
+//		.CreateLogger();
+
+
+builder.Logging.ClearProviders();
+
+var configuration = new ConfigurationBuilder()
+	.AddJsonFile("appsettings.json")
+	.Build();
+
+
+var logger = new LoggerConfiguration()
+	  .ReadFrom.Configuration(configuration)
+				.CreateLogger();
+
+//var logger = new LoggerConfiguration()
+//	.WriteTo.MSSqlServer("Data Source=COMPUTER\\MSSQLEXPRESS;Initial Catalog=my-books-db;Integrated Security=True;Encrypt=False",
+//	sinkOptions: new MSSqlServerSinkOptions { TableName = "Logs", SchemaName = "dbo", AutoCreateSqlTable = true },
+//	appConfiguration: configuration
+//		)
+//		.CreateBootstrapLogger();
+
+Log.Logger = logger;
+
+builder.Logging.AddSerilog(logger);
+
+builder.Host.UseSerilog();
 
 // Add services to the container.
 
@@ -20,6 +58,8 @@ builder.Services.AddSwaggerGen();
 //{
 //	c.SwaggerDoc("v2", new OpenApiInfo { Title = "my_books_updated", Version = "v2" });
 //});
+
+
 
 //Configure DBContext with SQL
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
@@ -43,6 +83,7 @@ builder.Services.AddApiVersioning(config =>
 
 });
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -59,14 +100,20 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
+{
+	builder.AddConsole();
+	builder.AddDebug();
+});
 //Exception Handling
-app.ConfigureBuildInExceptionHandler();
+app.ConfigureBuildInExceptionHandler(loggerFactory);
 //app.ConfigureCustomExceptionHandler();
 
 app.MapControllers();
 
-//AppDbInitializer.Seed(app);
+AppDbInitializer.Seed(app);
 
 app.Run();
+
 
 

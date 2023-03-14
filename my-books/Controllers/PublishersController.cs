@@ -13,16 +13,21 @@ namespace my_books.Controllers
 	public class PublishersController : ControllerBase
 	{
 		private PublishersService _publisherService;
-		public PublishersController(PublishersService publisherService)
+		private readonly ILogger<PublishersController> _logger;
+		public PublishersController(PublishersService publisherService, ILogger<PublishersController> logger)
 		{
 			_publisherService = publisherService;
+			_logger = logger;	
 		}
 
 		[HttpGet("get-all-publishers")]
 		public IActionResult GetAllPiblishers(string? sortBy, string? searchString, int pageNumber)
 		{
+			//throw new Exception("This is an exception thrown from GetAllPiblishers()");
 			try
 			{
+				_logger.LogInformation("This is just a log in GetAllPiblishers()");
+
 				var _result = _publisherService.GetAllPiblishers(sortBy, searchString, pageNumber);
 
 				return Ok(_result);
