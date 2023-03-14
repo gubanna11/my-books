@@ -21,14 +21,14 @@ namespace my_books.Controllers
 		}
 
 		[HttpGet("get-all-publishers")]
-		public IActionResult GetAllPiblishers(string? sortBy, string? searchString, int pageNumber)
+		public IActionResult GetAllPublishers(string? sortBy, string? searchString, int pageNumber)
 		{
 			//throw new Exception("This is an exception thrown from GetAllPiblishers()");
 			try
 			{
 				_logger.LogInformation("This is just a log in GetAllPiblishers()");
 
-				var _result = _publisherService.GetAllPiblishers(sortBy, searchString, pageNumber);
+				var _result = _publisherService.GetAllPublishers(sortBy, searchString, pageNumber);
 
 				return Ok(_result);
 			}
@@ -94,8 +94,6 @@ namespace my_books.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
-
 
 
 

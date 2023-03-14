@@ -14,7 +14,7 @@ namespace my_books.Data.Services
 			_context = context;
 		}
 
-		public List<Publisher> GetAllPiblishers(string sortBy, string searchString, int? pageNumber)
+		public List<Publisher> GetAllPublishers(string sortBy, string searchString, int? pageNumber)
 		{
 			var allPublishers =_context.Publishers.OrderBy(n => n.Name).ToList();
 
@@ -25,6 +25,9 @@ namespace my_books.Data.Services
 					case "name_desc":
 						allPublishers = allPublishers.OrderByDescending(n => n.Name).ToList();
 						break;
+					//case "name_asc":
+					//	allPublishers = allPublishers.OrderBy(n => n.Name).ToList();
+					//	break;
 					default:
 						break;
 				}
@@ -61,6 +64,7 @@ namespace my_books.Data.Services
 
 		public Publisher GetPublisherById(int id)
 			=> _context.Publishers.FirstOrDefault(n => n.Id == id);
+
 
 		public PublisherWithBooksAndAuthorsVM GetPublisherData(int publisherId)
 		{

@@ -12,14 +12,15 @@ namespace my_books.Data
 
 				if (!context.Publishers.Any())
 				{
-					context.Publishers.AddRange(new Publisher()
-					{
-						Name = "Publisher 1"
-					},
-					new Publisher()
-					{
-						Name = "Publisher 2"
-					});
+					context.Publishers.AddRange(
+						new Publisher()
+						{
+							Name = "Publisher 1"
+						},
+						new Publisher()
+						{
+							Name = "Publisher 2"
+						});
 					context.SaveChanges();
 				}
 
